@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2022"],
+    "strict": true
+  }
+}

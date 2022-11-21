@@ -1,0 +1,4 @@
+.env
+errors.txt
+example/src/*.module.css
+node_modules
