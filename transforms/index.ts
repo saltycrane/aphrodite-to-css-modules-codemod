@@ -17,11 +17,10 @@ import {
 import maybeAddPxToNumber from "./maybeAddPxToNumber";
 
 const CHECK_PRECEDENCE_COMMENT =
-  process.env.CHECK_PRECEDENCE_COMMENT ?? "CHECK_PRECEDENCE_COMMENT-not-set";
-const CLASS_NAMES_NAME =
-  process.env.CLASS_NAMES_NAME ?? "CLASS_NAMES_NAME-not-set";
+  process.env.CHECK_PRECEDENCE_COMMENT ?? " TODO: check CSS precedence";
+const CLASS_NAMES_NAME = process.env.CLASS_NAMES_NAME ?? "classNames";
 const CONTEXT_FILE_PATH =
-  process.env.CONTEXT_FILE_PATH ?? "CONTEXT_FILE_PATH-not-set";
+  process.env.CONTEXT_FILE_PATH ?? "./context.example.js";
 
 /**
  * transformer
@@ -141,7 +140,7 @@ function removeCssFunction(fileSource: string, api: types.API) {
           return;
         default:
           isCssFuncRemoved = false;
-          throw makeError(`arg.type of ${arg.type} is not handled`, arg, api);
+          throw makeError(`arg.type of "${arg.type}" is not handled`, arg, api);
       }
     })
     .toSource();
@@ -430,7 +429,7 @@ function convertToCssDeclaration(
 ) {
   // Get CSS property name
   let camelCasedCssProperty = "initialized to appease typescript";
-  let cssProperty;
+  let cssProperty: string;
   switch (cssDeclarationProperty.key.type) {
     case "Identifier":
       camelCasedCssProperty = cssDeclarationProperty.key.name;
@@ -465,7 +464,7 @@ function convertToCssDeclaration(
         cssValue = evaluateExpressionWithContext(cssDeclarationProperty, api);
       } catch (error) {
         throw makeError(
-          `${error} - Update 'context.js' to fix.`,
+          `${error} - Update "${CONTEXT_FILE_PATH}" to fix.`,
           cssDeclarationProperty,
           api,
         );

@@ -1,8 +1,9 @@
 import * as fs from "fs";
 import * as types from "jscodeshift";
 
-import { ERROR_FILE_PATH } from "./constants";
 import globals from "./globals";
+
+const ERROR_FILE_PATH = process.env.ERROR_FILE_PATH ?? "./errors.txt";
 
 /**
  * logError - log error to console and file

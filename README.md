@@ -204,7 +204,7 @@ function hexToRgbA(hex, alpha) {
 
 ## `.env` file
 
-[`dotenv`](https://github.com/motdotla/dotenv) is used for configuring 3 environment variables. Copy `.env.example` to `.env` before running.
+[`dotenv`](https://github.com/motdotla/dotenv) is used for configuring 4 environment variables. Copy `.env.example` to `.env` before running.
 
 ``` sh
 # Comment that is inserted when there are multiple styles passed to the
@@ -217,6 +217,9 @@ CLASS_NAMES_NAME="classNames"
 # Path to the JavaScript "context" file used to evaluation expressions
 # that are part of the styles object
 CONTEXT_FILE_PATH="./context.example.js"
+
+# Error file path
+ERROR_FILE_PATH="./errors.txt"
 ```
 
 ## Caveats
@@ -225,4 +228,4 @@ CONTEXT_FILE_PATH="./context.example.js"
   - Conditional styles
   - Multiple arguments passed to the Aphrodite `css` function
 - For cases where multiple arguments are passed to the Aphrodite `css` function, the codemod adds a `TODO: check CSS precedence` comment (`CHECK_PRECEDENCE_COMMENT` in `.env` file) because the rules of precedence differ between Aphrodite and vanilla CSS.
-- May leave behind unused imports if the styles object uses imported objects.
+- May leave behind unused imports if the styles object uses imported objects. Unused imports may be removed using [`eslint-plugin-unused-imports`](https://github.com/sweepline/eslint-plugin-unused-imports).
