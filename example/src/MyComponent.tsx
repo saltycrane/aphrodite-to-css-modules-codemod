@@ -56,6 +56,7 @@ export const myStyles = StyleSheet.create({
       color: colors.primary,
       borderColor: `${colors.info} !important`,
     },
+    outlineOffset: -1,
   },
   // comment a
   warning: {

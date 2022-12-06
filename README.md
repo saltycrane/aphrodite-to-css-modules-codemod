@@ -227,5 +227,5 @@ ERROR_FILE_PATH="./errors.txt"
 - Uses the [`classnames`](https://github.com/JedWatson/classnames) package to handle:
   - Conditional styles
   - Multiple arguments passed to the Aphrodite `css` function
-- For cases where multiple arguments are passed to the Aphrodite `css` function, the codemod adds a `TODO: check CSS precedence` comment (`CHECK_PRECEDENCE_COMMENT` in `.env` file) because the rules of precedence differ between Aphrodite and vanilla CSS.
+- For cases where multiple arguments are passed to the Aphrodite `css` function, the codemod adds a `TODO: check CSS precedence` comment (`CHECK_PRECEDENCE_COMMENT` in `.env` file) because the rules of precedence differ between Aphrodite and vanilla CSS. See the [_Overriding Styles_](https://github.com/Khan/aphrodite#overriding-styles) section of the Aphrodite docs for more information.
 - May leave behind unused imports if the styles object uses imported objects. Unused imports may be removed using [`eslint-plugin-unused-imports`](https://github.com/sweepline/eslint-plugin-unused-imports).

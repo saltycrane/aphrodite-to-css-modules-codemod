@@ -401,7 +401,7 @@ function convertToCssRuleSets(
 }
 
 /**
- *
+ * convertPseudoSelectorRuleSet
  */
 function convertPseudoSelectorRuleSet(
   property: types.ObjectProperty,
@@ -429,7 +429,7 @@ function convertToCssDeclaration(
 ) {
   // Get CSS property name
   let camelCasedCssProperty = "initialized to appease typescript";
-  let cssProperty: string;
+  let cssProperty = "initialized to appease typescript";
   switch (cssDeclarationProperty.key.type) {
     case "Identifier":
       camelCasedCssProperty = cssDeclarationProperty.key.name;
@@ -489,7 +489,11 @@ function convertToCssDeclaration(
           api,
         );
       }
-      cssValue = `${operator}${argument.value}`;
+      const argValue = maybeAddPxToNumber(
+        camelCasedCssProperty,
+        argument.value,
+      );
+      cssValue = `${operator}${argValue}`;
       break;
     }
     default:
